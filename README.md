@@ -25,9 +25,11 @@ A modern, highly-polished personal portfolio template built with a focus on eleg
 - **Responsive Stack Carousel**: An elegant auto-scrolling logomark carousel with custom CSS masking fades.
 - **Responsive & Performant**: Built on Vite with Tailwind CSS, ensuring a perfect layout across all mobile and desktop viewports.
 
-## Getting Started
+## How To Use
 
-Skip the heavy lifting. Clone the repository, modify the configuration file, and deploy.
+This template is designed to be a **drop-in zero-code solution**. You do *not* need to understand React or Tailwind CSS to use it. 
+
+To personalize the portfolio for yourself, you only need to edit **one single file**: `src/config.tsx`. When you update the data in this configuration file, the entire website will automatically re-render with your custom content, links, and projects!
 
 ### 1. Clone the repository
 ```bash

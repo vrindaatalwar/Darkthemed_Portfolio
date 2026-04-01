@@ -218,13 +218,15 @@ export const MobileNavToggle = ({
   );
 };
 
+import { CONFIG } from "../../config";
+
 export const NavbarLogo = () => {
   return (
     <a
       href="https://www.google.com"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal"
     >
-      <span className="text-white font-serif text-[22px] tracking-wide">Vrindaa</span>
+      <span className="text-white font-serif text-[22px] tracking-wide">{CONFIG.firstName}</span>
     </a>
   );
 };

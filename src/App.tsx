@@ -3,7 +3,6 @@ import { GitHubCalendar } from 'react-github-calendar';
 import { motion, AnimatePresence, useScroll, useSpring, useMotionValueEvent } from 'motion/react';
 import { Github as GithubIcon, Twitter, Linkedin, Mail, ChevronRight, ChevronDown, ExternalLink, ChevronUp } from 'lucide-react';
 import { AnimatedCarousel } from './components/ui/logo-carousel';
-import { React as ReactLogo, Nextjs, Vercel, TypeScript, TailwindCSS, GitHub, Figma } from './components/ui/tech-logos';
 import { TextHoverEffect } from './components/ui/hover-text-effect';
 import {
   Navbar,
@@ -15,16 +14,7 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "./components/ui/resizable-navbar";
-
-const partnerLogos = [
-  { name: "React", icon: ReactLogo },
-  { name: "Next.js", icon: Nextjs },
-  { name: "Vercel", icon: Vercel },
-  { name: "TypeScript", icon: TypeScript },
-  { name: "Tailwind CSS", icon: TailwindCSS },
-  { name: "GitHub", icon: GitHub },
-  { name: "Figma", icon: Figma },
-];
+import { CONFIG } from './config';
 
 const LANGUAGES = [
   { text: "Hello", lang: "English" },
@@ -143,38 +133,7 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openProjectIndex, setOpenProjectIndex] = useState<number>(-1);
 
-  const projects = [
-    {
-      title: "MetaVerse",
-      description: "A browser-based spatial video chat platform that allows users to interact in a 2D pixel-art world. Users can connect, move their avatars with real-time physics, and communicate based on proximity. Solved complex frontend challenges including double-render strict mode handling and asset synchronization across varying network speeds.",
-      techStack: ["Next.js", "Node.js", "Zustand", "Phaser 3", "WebSockets", "TailwindCSS", "TypeScript"],
-      link: "https://www.google.com"
-    },
-    {
-      title: "SuperGlobe",
-      description: "A high-performance visualization tool for global environmental data. Built with Three.js to render real-time weather patterns and carbon emissions across a detailed 3D globe, supporting interactive exploration and data filtering.",
-      techStack: ["React", "Three.js", "Python", "FastAPI", "PostgreSQL"],
-      link: "https://www.google.com"
-    },
-    {
-      title: "Swapify",
-      description: "A decentralized finance protocol focused on low-slippage cross-chain asset swapping. Features an automated market maker (AMM) model with optimized smart contracts for gas efficiency and robust security audits.",
-      techStack: ["Solidity", "Ethers.js", "Hardhat", "React", "TypeScript"],
-      link: "https://www.google.com"
-    },
-    {
-      title: "Quorum",
-      description: "A modern governance platform for DAOs, providing transparent voting mechanisms and treasury management. Integrated with multi-sig wallets and on-chain proposal tracking to empower community decision-making.",
-      techStack: ["GraphQL", "Apollo", "Next.js", "Node.js", "PostgreSQL"],
-      link: "https://www.google.com"
-    },
-    {
-      title: "Seedling",
-      description: "An interactive educational platform for sustainable urban gardening. Combines a rich community knowledge base with a personalized grow-tracking dashboard to help city dwellers maximize their green spaces.",
-      techStack: ["Flutter", "Firebase", "Dart", "Google Cloud", "Nginx"],
-      link: "https://www.google.com"
-    }
-  ];
+
 
   useEffect(() => {
     const findScrollable = (el: HTMLElement): HTMLElement | null => {
@@ -200,7 +159,7 @@ function App() {
     return () => clearTimeout(timeout);
   }, []);
 
-
+  const displayGithubUsername = CONFIG.github.username || CONFIG.github.fallbackUsername;
 
   return (
     <div className="min-h-screen bg-[#111010] text-[#a3a3a3] font-sans selection:bg-white/10 flex flex-col items-center w-full pb-0">
@@ -286,8 +245,8 @@ function App() {
             <div className="absolute -bottom-12 left-0 z-20">
               <div className="w-[96px] h-[96px] rounded-full overflow-hidden border-[6px] border-[#111010] bg-[#1a1a1a]">
                 <img
-                  src="https://github.com/vrindaatalwar.png"
-                  alt="Vrindaa Talwar"
+                  src={CONFIG.profileImage}
+                  alt={CONFIG.name}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -298,30 +257,24 @@ function App() {
           <section className="flex flex-col gap-6 mt-4 relative z-30">
             <div>
               <h1 className="text-[44px] text-white mb-2 leading-none tracking-tight font-serif">
-                Vrindaa Talwar
+                {CONFIG.name}
               </h1>
               <p className="text-[15px] text-[#737373] mt-2 font-serif tracking-wide">
-                21 • ideas • systems • stories
+                {CONFIG.title}
               </p>
             </div>
 
             <div className="text-[15px] leading-relaxed text-[#a3a3a3] space-y-6">
-              <p>
-                I'm someone who loves <span className="underline decoration-wavy decoration-1 underline-offset-[3px] [text-decoration-skip-ink:none]" style={{ textDecorationColor: 'white' }}>exploring ideas</span>, through code, design, and whatever medium feels right that day. I spend most of my time <span className="underline decoration-wavy decoration-1 underline-offset-[3px] [text-decoration-skip-ink:none]" style={{ textDecorationColor: 'white' }}>building things</span> that make life a bit simpler or spark curiosity, often blending structure with imagination.
-              </p>
-              <p>
-                Outside of work, I am a <span className="underline decoration-wavy decoration-1 underline-offset-[3px] [text-decoration-skip-ink:none]" style={{ textDecorationColor: 'white' }}>part-time artist</span> and a <span className="underline decoration-wavy decoration-1 underline-offset-[3px] [text-decoration-skip-ink:none]" style={{ textDecorationColor: 'white' }}>full-time cinephile</span> and audiophile. I enjoy stories in all forms, whether that's film, music, or the small experiments that keep me inspired.
-              </p>
-              <p>
-                Currently open to <span className="underline decoration-wavy decoration-1 underline-offset-[3px] [text-decoration-skip-ink:none]" style={{ textDecorationColor: 'white' }}>part-time and contract roles</span>. The kind that let me dive deep into <span className="underline decoration-wavy decoration-1 underline-offset-[3px] [text-decoration-skip-ink:none]" style={{ textDecorationColor: 'white' }}>interesting systems</span>, build cool fast tools, or collaborate on <span className="underline decoration-wavy decoration-1 underline-offset-[3px] [text-decoration-skip-ink:none]" style={{ textDecorationColor: 'white' }}>experimental ideas</span>.
-              </p>
+              {CONFIG.about.paragraphs.map((p, idx) => (
+                <p key={`bio-${idx}`}>{p}</p>
+              ))}
             </div>
 
             <div className="flex items-center gap-5 mt-2">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Twitter size={18} strokeWidth={1.5} /></a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><GithubIcon size={18} strokeWidth={1.5} /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Linkedin size={18} strokeWidth={1.5} /></a>
-              <a href="mailto:vrindaa.talwar@gmail.com" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Mail size={18} strokeWidth={1.5} /></a>
+              <a href={CONFIG.social.twitter} target="_blank" rel="noopener noreferrer" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Twitter size={18} strokeWidth={1.5} /></a>
+              <a href={CONFIG.social.github} target="_blank" rel="noopener noreferrer" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><GithubIcon size={18} strokeWidth={1.5} /></a>
+              <a href={CONFIG.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Linkedin size={18} strokeWidth={1.5} /></a>
+              <a href={CONFIG.social.email} className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Mail size={18} strokeWidth={1.5} /></a>
             </div>
           </section>
 
@@ -334,7 +287,7 @@ function App() {
                 <p className="text-[#a3a3a3] font-sans tracking-[-0.03em] text-[15px] opacity-100">Places where I've built systems and solved problems</p>
               </div>
               <a
-                href="https://linkedin.com"
+                href={CONFIG.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#737373] hover:text-white transition-colors mt-2 group"
@@ -345,14 +298,9 @@ function App() {
             </div>
 
             <div className="flex flex-col gap-6">
-              <ExperienceItem company="Global Consulting Associates" role="AI Consultant" date="Sept 2024 — Present" location="Remote" />
-              <ExperienceItem company="Hexzt" role="SDE-II" date="Jun 2024 — Aug 2024" location="Remote" />
-              <ExperienceItem company="Fada Cba" role="Founder" date="Jun 2024 — May 2025" location="Remote" />
-              <ExperienceItem company="Agalio.ai" role="SDE" date="Jan 2024 — Apr 2024" location="Remote" />
-              <ExperienceItem company="Codemed" role="Consultant" date="Sept 2023 — Dec 2024" location="Remote" />
-              <ExperienceItem company="Moved HR Solutions" role="SDE" date="Feb 2023 — May 2024" location="Remote" />
-              <ExperienceItem company="SimplifyVets" role="SDE Intern" date="Jul 2022 — Sept 2022" location="Remote" />
-              <ExperienceItem company="Zata Ze" role="Founder" date="Mar 2020 — Jun 2022" location="Remote" />
+              {CONFIG.experience.map((exp, idx) => (
+                <ExperienceItem key={`experience-${idx}`} {...exp} />
+              ))}
             </div>
           </section>
 
@@ -362,10 +310,10 @@ function App() {
             <div className="mb-6 flex justify-between items-start">
               <div>
                 <h2 className="text-white font-serif text-[26px] mb-2">GitHub contributions</h2>
-                <p className="text-[#a3a3a3] font-sans tracking-[-0.03em] text-[15px] opacity-100">120 contributions in the last year</p>
+                <p className="text-[#a3a3a3] font-sans tracking-[-0.03em] text-[15px] opacity-100">{CONFIG.github.contributionsText}</p>
               </div>
               <a
-                href="https://github.com"
+                href={CONFIG.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#737373] hover:text-white transition-colors mt-2 group"
@@ -385,7 +333,7 @@ function App() {
               >
                 <div className="pr-2 pb-2">
                   <GitHubCalendar
-                    username="vrindaatalwar"
+                    username={displayGithubUsername}
                     colorScheme="dark"
                     blockSize={11}
                     blockMargin={4}
@@ -415,7 +363,7 @@ function App() {
             </div>
 
             <div className="flex flex-col">
-              {projects.map((project, index) => (
+              {CONFIG.projects.map((project, index) => (
                 <ProjectItem 
                   key={project.title}
                   {...project}
@@ -432,9 +380,9 @@ function App() {
 
             <div className="-ml-6 overflow-hidden">
               <AnimatedCarousel
-                title="Stack I use"
-                subTitle="Technologies I work with to build products that solve real problems"
-                logos={partnerLogos}
+                title={CONFIG.stack.title}
+                subTitle={CONFIG.stack.subtitle}
+                logos={CONFIG.stack.logos}
                 autoPlay={true}
                 itemsPerViewMobile={3}
                 itemsPerViewDesktop={5}
@@ -457,13 +405,13 @@ function App() {
               <h3 className="text-white font-serif tracking-[-0.03em] text-[22px] mb-2">Let's connect</h3>
               <p className="text-sm text-[#a3a3a3] mb-6">Find me on these platforms:</p>
               <div className="flex flex-wrap items-center gap-6 text-sm text-[#737373]">
-                <a href="https://github.com" className="hover:text-white transition-colors flex items-center gap-2"><GithubIcon size={14} /> GitHub</a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Twitter size={14} /> Twitter</a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Linkedin size={14} /> LinkedIn</a>
-                <a href="mailto:vrindaa.talwar@gmail.com" className="hover:text-white transition-colors flex items-center gap-2"><Mail size={14} /> Mail</a>
+                <a href={CONFIG.social.github} className="hover:text-white transition-colors flex items-center gap-2"><GithubIcon size={14} /> GitHub</a>
+                <a href={CONFIG.social.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Twitter size={14} /> Twitter</a>
+                <a href={CONFIG.social.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Linkedin size={14} /> LinkedIn</a>
+                <a href={CONFIG.social.email} className="hover:text-white transition-colors flex items-center gap-2"><Mail size={14} /> Mail</a>
               </div>
               <p className="text-xs text-[#404040] mt-8">
-                © {new Date().getFullYear()} Vrindaa Talwar
+                © {new Date().getFullYear()} {CONFIG.name}
               </p>
             </div>
           </section>
@@ -471,7 +419,7 @@ function App() {
 
         {/* Signature perfectly attached to the absolute physical bottom */}
         <div className="w-full flex items-end justify-center overflow-hidden pointer-events-auto relative z-30 mt-10">
-          <TextHoverEffect text="Vrindaa" />
+          <TextHoverEffect text={CONFIG.firstName} />
         </div>
       </div>
 

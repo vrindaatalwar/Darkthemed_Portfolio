@@ -184,7 +184,6 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
@@ -222,10 +221,10 @@ export const MobileNavToggle = ({
 export const NavbarLogo = () => {
   return (
     <a
-      href="#"
+      href="https://www.google.com"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal"
     >
-      <span className="text-gray-100 font-serif text-[22px] tracking-wide">Vrindaa</span>
+      <span className="text-white font-serif text-[22px] tracking-wide">Vrindaa</span>
     </a>
   );
 };

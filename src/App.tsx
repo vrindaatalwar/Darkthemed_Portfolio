@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useScroll, useSpring, useMotionValueEvent } fr
 import { Github as GithubIcon, Twitter, Linkedin, Mail, ChevronRight, ChevronDown, ExternalLink, ChevronUp } from 'lucide-react';
 import { AnimatedCarousel } from './components/ui/logo-carousel';
 import { React as ReactLogo, Nextjs, Vercel, TypeScript, TailwindCSS, GitHub, Figma } from './components/ui/tech-logos';
+import { TextHoverEffect } from './components/ui/hover-text-effect';
 import {
   Navbar,
   NavBody,
@@ -127,19 +128,7 @@ function ScrollTracker() {
   );
 }
 
-function ScrollBlurOverlay() {
-  return (
-    <div 
-      className="fixed bottom-0 left-0 right-0 h-[100px] z-[60] pointer-events-none bg-gradient-to-t from-[#111010] to-transparent"
-      style={{
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
-        maskImage: 'linear-gradient(to top, black, transparent)',
-        WebkitMaskImage: 'linear-gradient(to top, black, transparent)'
-      }}
-    />
-  );
-}
+
 
 function App() {
   const calendarRef = useRef<HTMLDivElement>(null);
@@ -159,31 +148,31 @@ function App() {
       title: "MetaVerse",
       description: "A browser-based spatial video chat platform that allows users to interact in a 2D pixel-art world. Users can connect, move their avatars with real-time physics, and communicate based on proximity. Solved complex frontend challenges including double-render strict mode handling and asset synchronization across varying network speeds.",
       techStack: ["Next.js", "Node.js", "Zustand", "Phaser 3", "WebSockets", "TailwindCSS", "TypeScript"],
-      link: "#"
+      link: "https://www.google.com"
     },
     {
       title: "SuperGlobe",
       description: "A high-performance visualization tool for global environmental data. Built with Three.js to render real-time weather patterns and carbon emissions across a detailed 3D globe, supporting interactive exploration and data filtering.",
       techStack: ["React", "Three.js", "Python", "FastAPI", "PostgreSQL"],
-      link: "#"
+      link: "https://www.google.com"
     },
     {
       title: "Swapify",
       description: "A decentralized finance protocol focused on low-slippage cross-chain asset swapping. Features an automated market maker (AMM) model with optimized smart contracts for gas efficiency and robust security audits.",
       techStack: ["Solidity", "Ethers.js", "Hardhat", "React", "TypeScript"],
-      link: "#"
+      link: "https://www.google.com"
     },
     {
       title: "Quorum",
       description: "A modern governance platform for DAOs, providing transparent voting mechanisms and treasury management. Integrated with multi-sig wallets and on-chain proposal tracking to empower community decision-making.",
       techStack: ["GraphQL", "Apollo", "Next.js", "Node.js", "PostgreSQL"],
-      link: "#"
+      link: "https://www.google.com"
     },
     {
       title: "Seedling",
       description: "An interactive educational platform for sustainable urban gardening. Combines a rich community knowledge base with a personalized grow-tracking dashboard to help city dwellers maximize their green spaces.",
       techStack: ["Flutter", "Firebase", "Dart", "Google Cloud", "Nginx"],
-      link: "#"
+      link: "https://www.google.com"
     }
   ];
 
@@ -214,7 +203,7 @@ function App() {
 
 
   return (
-    <div className="min-h-screen bg-[#111010] text-[#a3a3a3] font-sans selection:bg-white/10 flex flex-col items-center w-full pb-20">
+    <div className="min-h-screen bg-[#111010] text-[#a3a3a3] font-sans selection:bg-white/10 flex flex-col items-center w-full pb-0">
 
       {/* NAVBAR */}
       <Navbar className="top-[3px]">
@@ -252,7 +241,7 @@ function App() {
         </MobileNav>
       </Navbar>
 
-      <div className="w-full max-w-[700px] relative mx-auto flex-1 flex flex-col pt-24">
+      <div className="w-full max-w-[749px] relative mx-auto flex-1 flex flex-col pt-24">
         {/* Left Side Border with Diagonal Lines */}
         <div
           className="absolute top-[60px] bottom-0 right-full w-10 opacity-[0.04] pointer-events-none border-x border-[#ffffff]"
@@ -265,7 +254,7 @@ function App() {
           style={{ backgroundImage: 'repeating-linear-gradient(-45deg, #ffffff, #ffffff 1px, transparent 1px, transparent 8px)' }}
         ></div>
 
-        <main className="w-full max-w-[640px] px-6 mx-auto flex flex-col gap-12 relative z-10 bg-[#111010]">
+        <main className="w-full max-w-[685px] px-6 mx-auto flex flex-col gap-12 relative z-10 bg-[#111010]">
           {/* HERO SECTION */}
           <section id="about" className="relative w-full overflow-visible mb-0">
             {/* Mountain Background */}
@@ -308,7 +297,7 @@ function App() {
           {/* PROFILE DETAILS */}
           <section className="flex flex-col gap-6 mt-4 relative z-30">
             <div>
-              <h1 className="text-[44px] text-gray-100 mb-2 leading-none tracking-tight font-serif">
+              <h1 className="text-[44px] text-white mb-2 leading-none tracking-tight font-serif">
                 Vrindaa Talwar
               </h1>
               <p className="text-[15px] text-[#737373] mt-2 font-serif tracking-wide">
@@ -329,21 +318,30 @@ function App() {
             </div>
 
             <div className="flex items-center gap-5 mt-2">
-              <a href="#" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Twitter size={18} strokeWidth={1.5} /></a>
-              <a href="https://github.com/vrindaatalwar" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><GithubIcon size={18} strokeWidth={1.5} /></a>
-              <a href="#" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Linkedin size={18} strokeWidth={1.5} /></a>
-              <a href="#" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Mail size={18} strokeWidth={1.5} /></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Twitter size={18} strokeWidth={1.5} /></a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><GithubIcon size={18} strokeWidth={1.5} /></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Linkedin size={18} strokeWidth={1.5} /></a>
+              <a href="mailto:vrindaa.talwar@gmail.com" className="text-[#a3a3a3] hover:text-gray-100 transition-colors"><Mail size={18} strokeWidth={1.5} /></a>
             </div>
           </section>
 
           {/* EXPERIENCE TIMELINE */}
           <section id="experience" className="mt-8 pt-12 relative w-full">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[700px] border-t border-dotted border-[#404040]"></div>
-            <div className="mb-4 flex justify-between items-start">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[749px] border-t border-dotted border-[#404040]"></div>
+            <div className="mb-6 flex justify-between items-start">
               <div>
-                <h2 className="text-[#a3a3a3] font-serif text-[26px] mb-2">Professional experience</h2>
-                <p className="text-gray-200 font-sans tracking-[-0.03em] text-[15px] opacity-100">Places where I've built systems and solved problems</p>
+                <h2 className="text-white font-serif text-[26px] mb-2">Professional experience</h2>
+                <p className="text-[#a3a3a3] font-sans tracking-[-0.03em] text-[15px] opacity-100">Places where I've built systems and solved problems</p>
               </div>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-[#737373] hover:text-white transition-colors mt-2 group"
+              >
+                <span className="text-[14px] font-sans">Follow</span>
+                <Linkedin size={16} />
+              </a>
             </div>
 
             <div className="flex flex-col gap-6">
@@ -360,14 +358,14 @@ function App() {
 
           {/* GITHUB CONTRIBUTIONS */}
           <section className="mt-8 pt-12 relative w-full">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[700px] border-t border-dotted border-[#404040]"></div>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[749px] border-t border-dotted border-[#404040]"></div>
             <div className="mb-6 flex justify-between items-start">
               <div>
-                <h2 className="text-[#737373] font-serif text-[26px] mb-2">GitHub contributions</h2>
-                <p className="text-gray-200 font-sans tracking-[-0.03em] text-[15px] opacity-100">120 contributions in the last year</p>
+                <h2 className="text-white font-serif text-[26px] mb-2">GitHub contributions</h2>
+                <p className="text-[#a3a3a3] font-sans tracking-[-0.03em] text-[15px] opacity-100">120 contributions in the last year</p>
               </div>
               <a
-                href="https://github.com/vrindaatalwar"
+                href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#737373] hover:text-white transition-colors mt-2 group"
@@ -379,40 +377,41 @@ function App() {
             <div className="relative group">
               <div
                 ref={calendarRef}
-                className="github-calendar-scroll overflow-x-hidden"
+                className="github-calendar-scroll overflow-x-auto overflow-y-hidden"
                 style={{
                   WebkitMaskImage: 'linear-gradient(to right, transparent, black 40px)',
                   maskImage: 'linear-gradient(to right, transparent, black 40px)'
                 }}
               >
-                <GitHubCalendar
-                  username="vrindaatalwar"
-                  colorScheme="dark"
-                  blockSize={11}
-                  blockMargin={4}
-                  blockRadius={5}
-                  fontSize={11}
-                  theme={{
-                    dark: ['#1e1e1e', '#333333', '#555555', '#999999', '#ffffff'],
-                  }}
-                  labels={{
-                    totalCount: '',
-                  }}
-                  style={{ fontFamily: 'Inter, -apple-system, sans-serif', color: '#ffffff' }}
-                />
+                <div className="pr-2 pb-2">
+                  <GitHubCalendar
+                    username="vrindaatalwar"
+                    colorScheme="dark"
+                    blockSize={11}
+                    blockMargin={4}
+                    blockRadius={5}
+                    fontSize={11}
+                    theme={{
+                      dark: ['#1e1e1e', '#333333', '#555555', '#999999', '#ffffff'],
+                    }}
+                    labels={{
+                      totalCount: '',
+                    }}
+                    style={{ fontFamily: 'Inter, -apple-system, sans-serif', color: '#ffffff' }}
+                  />
+                </div>
               </div>
             </div>
           </section>
 
           {/* PROJECTS */}
           <section id="projects" className="mt-8 pt-12 relative w-full">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[700px] border-t border-dotted border-[#404040]"></div>
-            <div className="mb-8 flex justify-between items-center">
-              <h2 className="text-[#737373] font-serif text-[26px]">Projects</h2>
-              <a href="#" className="flex items-center gap-1.5 text-[#737373] hover:text-white transition-colors group">
-                <span className="text-[14px] font-sans">See All</span>
-                <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-              </a>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[749px] border-t border-dotted border-[#404040]"></div>
+            <div className="mb-6 flex justify-between items-start">
+              <div>
+                <h2 className="text-white font-serif text-[26px] mb-2">Projects</h2>
+                <p className="text-[#a3a3a3] font-sans tracking-[-0.03em] text-[15px] opacity-100">Here's a list of projects I loved making :)</p>
+              </div>
             </div>
 
             <div className="flex flex-col">
@@ -429,7 +428,7 @@ function App() {
 
           {/* STACK */}
           <section className="mt-8 pt-12 relative w-full">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[700px] border-t border-dotted border-[#404040]"></div>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[749px] border-t border-dotted border-[#404040]"></div>
 
             <div className="-ml-6 overflow-hidden">
               <AnimatedCarousel
@@ -452,16 +451,16 @@ function App() {
 
           {/* CTA & FOOTER */}
           <section id="contact" className="mt-4 pt-6 relative flex flex-col items-center justify-center pb-8 gap-6 text-center">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[700px] border-t border-dotted border-[#404040]"></div>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[749px] border-t border-dotted border-[#404040]"></div>
 
             <div className="w-full text-left mt-6">
-              <h3 className="text-gray-200 font-serif tracking-[-0.03em] text-[22px] mb-1">Let's connect</h3>
-              <p className="text-sm text-[#737373] mb-6">Find me on these platforms:</p>
+              <h3 className="text-white font-serif tracking-[-0.03em] text-[22px] mb-2">Let's connect</h3>
+              <p className="text-sm text-[#a3a3a3] mb-6">Find me on these platforms:</p>
               <div className="flex flex-wrap items-center gap-6 text-sm text-[#737373]">
-                <a href="https://github.com/vrindaatalwar" className="hover:text-white transition-colors flex items-center gap-2"><GithubIcon size={14} /> GitHub</a>
-                <a href="#" className="hover:text-white transition-colors flex items-center gap-2"><Twitter size={14} /> Twitter</a>
-                <a href="#" className="hover:text-white transition-colors flex items-center gap-2"><Linkedin size={14} /> LinkedIn</a>
-                <a href="#" className="hover:text-white transition-colors flex items-center gap-2"><Mail size={14} /> Mail</a>
+                <a href="https://github.com" className="hover:text-white transition-colors flex items-center gap-2"><GithubIcon size={14} /> GitHub</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Twitter size={14} /> Twitter</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Linkedin size={14} /> LinkedIn</a>
+                <a href="mailto:vrindaa.talwar@gmail.com" className="hover:text-white transition-colors flex items-center gap-2"><Mail size={14} /> Mail</a>
               </div>
               <p className="text-xs text-[#404040] mt-8">
                 © {new Date().getFullYear()} Vrindaa Talwar
@@ -469,15 +468,15 @@ function App() {
             </div>
           </section>
         </main>
-        {/* Bottom Fade Gradient - Ensures side borders and content don't end abruptly */}
-        <div className="absolute bottom-0 left-[-150px] right-[-150px] h-[150px] bg-gradient-to-t from-[#111010] via-[#111010]/50 to-transparent pointer-events-none z-20"></div>
+
+        {/* Signature perfectly attached to the absolute physical bottom */}
+        <div className="w-full flex items-end justify-center overflow-hidden pointer-events-auto relative z-30 mt-10">
+          <TextHoverEffect text="Vrindaa" />
+        </div>
       </div>
-      
+
       {/* Scroll Progress Tracker */}
       <ScrollTracker />
-      
-      {/* Scroll Blur Overlay */}
-      <ScrollBlurOverlay />
     </div>
   );
 }
@@ -498,16 +497,16 @@ function ProjectItem({
   onToggle: () => void 
 }) {
   return (
-    <div className="border-b border-[#262626]/50 last:border-0 hover:border-white/10 transition-colors">
+    <div className="border-b border-[#262626]/50 last:border-0 transition-colors">
       <button 
         onClick={onToggle}
-        className="w-full py-4 flex items-center justify-between group transition-colors hover:bg-white/2 px-2 -mx-2 rounded-lg"
+        className="w-full py-4 flex items-center justify-between group transition-colors px-2 -mx-2 rounded-lg"
       >
         <div className="flex items-center gap-4">
-          <div className="text-[#737373] group-hover:text-white transition-colors">
+          <div className="text-[#737373] transition-colors">
             {isOpen ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
           </div>
-          <h3 className="text-gray-100 font-sans font-medium text-[15px] tracking-tight">
+          <h3 className="text-white font-sans font-medium text-[15px] tracking-tight transition-transform duration-150 ease-in group-hover:scale-[1.2] origin-left">
             {title}
           </h3>
         </div>
@@ -557,7 +556,7 @@ function ExperienceItem({ company, role, date, location }: { company: string, ro
   return (
     <div className="flex justify-between items-start group">
       <div className="flex flex-col">
-        <h3 className="text-gray-100 font-sans font-medium text-[15px] tracking-tight mb-1">
+        <h3 className="text-white font-sans font-medium text-[15px] tracking-tight mb-1">
           {company}
         </h3>
         <p className="text-[#737373] font-sans text-[14px]">{role}</p>

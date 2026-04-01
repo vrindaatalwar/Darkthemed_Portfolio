@@ -7,6 +7,9 @@
   --color-base: #111010;
   --color-muted: #a3a3a3;
   --color-subtle: #262626;
+
+  /* Increase spacing by 7% (0.25rem * 1.07 = 0.2675rem) */
+  --spacing: 0.2675rem;
 }
 
 html {

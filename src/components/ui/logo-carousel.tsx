@@ -38,18 +38,24 @@ export const AnimatedCarousel = ({
     <div className={`w-full ${padding} bg-transparent ${containerClassName}`}>
       <div className="container mx-auto">
         <div className={`flex flex-col ${spacing}`}>
-          <div className={`text-left ml-2 mb-8 ${titleClassName}`}>
-            <h2 className="text-[#737373] font-serif tracking-normal text-[26px] mb-2">
+          <div className={`text-left ml-2 mb-6 ${titleClassName}`}>
+            <h2 className="text-white font-serif tracking-normal text-[26px] mb-2">
               {title}
             </h2>
             {subTitle && (
-              <p className="text-gray-200 font-sans tracking-[-0.03em] text-[15px]">
+              <p className="text-[#a3a3a3] font-sans tracking-[-0.03em] text-[15px]">
                 {subTitle}
               </p>
             )}
           </div>
           
-          <div>
+          <div 
+            className="w-full relative"
+            style={{
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent)',
+              maskImage: 'linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent)'
+            }}
+          >
             <Carousel 
               opts={{ 
                 loop: true,

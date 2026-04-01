@@ -1,4 +1,11 @@
 import { React as ReactLogo, Nextjs, Vercel, TypeScript, TailwindCSS, GitHub, Figma } from './components/ui/tech-logos';
+import type { ReactNode } from 'react';
+
+const Highlight = ({ children }: { children: ReactNode }) => (
+  <span className="underline decoration-wavy decoration-1 underline-offset-[3px] [text-decoration-skip-ink:none]" style={{ textDecorationColor: 'white' }}>
+    {children}
+  </span>
+);
 
 export const CONFIG = {
   name: "Jane Doe",
@@ -15,9 +22,9 @@ export const CONFIG = {
 
   about: {
     paragraphs: [
-      "I am a passionate software engineer who loves building scalable applications and exploring new technologies. I spend most of my time architecting systems that make life a bit simpler or spark curiosity, often blending structure with imagination.",
-      "Outside of work, I am an avid open-source contributor and a lifelong learner. I enjoy diving deep into technical challenges, whether that's optimizing backend infrastructure, designing intuitive interfaces, or writing about my learnings.",
-      "Currently open to new opportunities and collaborations. The kind that let me dive deep into interesting systems, build cool fast tools, or collaborate on experimental ideas."
+      <>I am a passionate software engineer who loves <Highlight>building scalable applications</Highlight> and exploring new technologies. I spend most of my time <Highlight>architecting systems</Highlight> that make life a bit simpler or spark curiosity, often blending logic with imagination.</>,
+      <>Outside of work, I am an <Highlight>avid open-source contributor</Highlight> and a <Highlight>lifelong learner</Highlight>. I enjoy diving deep into technical challenges, whether that's optimizing backend infrastructure, designing intuitive interfaces, or writing about my learnings.</>,
+      <>Currently open to <Highlight>new opportunities and collaborations</Highlight>. The kind that let me dive deep into <Highlight>interesting systems</Highlight>, build cool fast tools, or collaborate on <Highlight>experimental ideas</Highlight>.</>
     ]
   },
 

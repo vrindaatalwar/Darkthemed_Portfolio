@@ -398,7 +398,7 @@ function App() {
           </section>
 
           {/* CTA & FOOTER */}
-          <section id="contact" className="mt-4 pt-6 relative flex flex-col items-center justify-center pb-8 gap-6 text-center">
+          <section id="contact" className="mt-4 pt-6 relative flex flex-col items-center justify-center text-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[749px] border-t border-dotted border-[#404040]"></div>
 
             <div className="w-full text-left mt-6">
@@ -410,15 +410,12 @@ function App() {
                 <a href={CONFIG.social.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2"><Linkedin size={14} /> LinkedIn</a>
                 <a href={CONFIG.social.email} className="hover:text-white transition-colors flex items-center gap-2"><Mail size={14} /> Mail</a>
               </div>
-              <p className="text-xs text-[#404040] mt-8">
-                © {new Date().getFullYear()} {CONFIG.name}
-              </p>
             </div>
           </section>
         </main>
 
         {/* Signature perfectly attached to the absolute physical bottom */}
-        <div className="w-full flex items-end justify-center overflow-hidden pointer-events-auto relative z-30 mt-10">
+        <div className="w-full flex items-end justify-center overflow-hidden pointer-events-auto relative z-30 mt-8">
           <TextHoverEffect text={CONFIG.firstName} />
         </div>
       </div>

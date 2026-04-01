@@ -7,6 +7,10 @@ An ultra-sleek, high-contrast React portfolio template designed for developers, 
 [![Star on GitHub](https://img.shields.io/github/stars/vrindaatalwar/portfolio?style=social)](https://github.com/vrindaatalwar/portfolio)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+<br/>
+
+<img src="./src/assets/Dark_Themed%20Portfolio.png" alt="Dark Themed Portfolio UI Preview" width="100%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);"/>
+
 </div>
 
 ---

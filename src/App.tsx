@@ -164,6 +164,22 @@ function App() {
   return (
     <div className="min-h-screen bg-[#111010] text-[#a3a3a3] font-sans selection:bg-white/10 flex flex-col items-center w-full pb-0">
 
+      {/* Top scroll fade overlay */}
+      <div
+        className="fixed top-0 left-0 right-0 h-20 pointer-events-none z-[90]"
+        style={{
+          background: 'linear-gradient(to bottom, #111010 0%, transparent 100%)',
+        }}
+      />
+
+      {/* Bottom scroll fade overlay */}
+      <div
+        className="fixed bottom-0 left-0 right-0 h-20 pointer-events-none z-[90]"
+        style={{
+          background: 'linear-gradient(to top, #111010 0%, transparent 100%)',
+        }}
+      />
+
       {/* NAVBAR */}
       <Navbar className="top-[3px]">
         <NavBody>

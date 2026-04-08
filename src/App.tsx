@@ -14,45 +14,10 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "./components/ui/resizable-navbar";
+import { AppleHelloEffectEnglish } from "./components/apple-hello-effect-english";
 import { CONFIG } from './config';
 
-const LANGUAGES = [
-  { text: "Hello", lang: "English" },
-  { text: "नमस्ते", lang: "Hindi" },
-  { text: "Bonjour", lang: "French" },
-  { text: "Ciao", lang: "Italian" },
-  { text: "Hola", lang: "Spanish" },
-  { text: "こんにちは", lang: "Japanese" },
-  { text: "안녕하세요", lang: "Korean" }
-];
 
-function AnimatedGreeting() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % LANGUAGES.length);
-    }, 2000); // Faster pace as requested
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="relative h-[48px] flex items-center justify-center">
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={LANGUAGES[index].text}
-          initial={{ opacity: 0, filter: "blur(10px)", y: 5 }}
-          animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          exit={{ opacity: 0, filter: "blur(10px)", y: -5 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="font-serif text-white/90 text-[32px] tracking-wide px-4 text-center absolute whitespace-nowrap"
-        >
-          {LANGUAGES[index].text}
-        </motion.span>
-      </AnimatePresence>
-    </div>
-  );
-}
 
 function ScrollTracker() {
   const { scrollYProgress } = useScroll();
@@ -252,8 +217,8 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#111010] via-transparent to-[#111010] pointer-events-none"></div>
 
               {/* Animated Greeting */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-[-20px]">
-                <AnimatedGreeting />
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-[-20px] scale-[0.6]">
+                <AppleHelloEffectEnglish className="text-white/90" />
               </div>
             </div>
 

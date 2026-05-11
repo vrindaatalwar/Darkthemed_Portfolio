@@ -1,9 +1,9 @@
-import React, { useState, useEffect, type ReactNode } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { React as ReactLogo, Nextjs, Vercel, TypeScript, TailwindCSS, GitHub, Figma } from './components/ui/tech-logos';
 import profileImg from './assets/Vrindaapfp.png';
 import { Cards } from './components/ui/cards';
 import { NavBody, NavItems, NavbarLogo } from './components/ui/resizable-navbar';
-import { Input } from './components/ui/input';
+
 import MultiStateMorphButton from './components/ui/multi-state-morph-button';
 import { DynamicSearch } from './components/ui/dynamicsearch';
 

@@ -16,7 +16,7 @@ import {
 } from "./components/ui/resizable-navbar";
 import { AppleHelloEffectEnglish } from "./components/apple-hello-effect-english";
 import { CONFIG } from './config';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "./components/ui/card";
 
 
 
@@ -99,7 +99,7 @@ function App() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openProjectIndex, setOpenProjectIndex] = useState<number>(-1);
-  const [openComponentIndex, setOpenComponentIndex] = useState<number>(-1);
+  
 
 
 

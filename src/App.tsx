@@ -372,13 +372,11 @@ function App() {
               {CONFIG.components?.map((component, index) => {
                 return (
                   <Card key={component.title} className={`bg-[#111010] border border-[#262626] hover:border-[#404040] transition-colors group relative overflow-hidden flex flex-col justify-between ${index < 2 ? "md:col-span-5" : index === 2 ? "md:col-span-2" : "md:col-span-3"}`}>
-                    <a href={component.link} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10"></a>
                     <CardHeader className="p-5 pb-3">
                       <div className="flex justify-between items-center">
                         <CardTitle className="text-white font-sans text-[15px] font-medium tracking-tight">
                           {component.title}
                         </CardTitle>
-                        <ExternalLink size={14} className="text-[#737373] group-hover:text-white transition-colors" />
                       </div>
                     </CardHeader>
                     <CardContent className="p-5 pt-0 flex-1 flex flex-col">

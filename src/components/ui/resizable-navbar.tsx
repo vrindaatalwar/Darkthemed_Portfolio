@@ -74,9 +74,9 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
-              { visible },
-            )
+            child as React.ReactElement<{ visible?: boolean }>,
+            { visible },
+          )
           : child,
       )}
     </motion.div>
@@ -87,6 +87,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
+        backgroundColor: visible ? "rgba(17, 16, 16, 0.7)" : "rgba(17, 16, 16, 0.5)",
         backdropFilter: visible ? "blur(10px)" : "none",
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
@@ -95,13 +96,12 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         y: visible ? 20 : 0,
       }}
       transition={{
-        type: "spring",
-        stiffness: 200,
-        damping: 50,
+        type: "tween",
+        ease: [0.16, 1, 0.3, 1],
+        duration: 0.6,
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-5xl flex-row items-center justify-between self-start rounded-full bg-[#111010]/50 backdrop-blur-md px-4 py-2 lg:flex",
-        visible && "bg-[#111010]/70 shadow-lg",
+        "relative z-[60] mx-auto hidden w-full max-w-5xl flex-row items-center justify-between self-start rounded-full backdrop-blur-md px-4 py-2 lg:flex",
         className,
       )}
     >
@@ -121,13 +121,25 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       {items.map((item, idx) => (
         <a
           onClick={onItemClick}
-          className="relative px-4 py-2 group"
+          className="relative px-4 py-2 group/navlink"
           key={`link-${idx}`}
           href={item.link}
         >
-          <span className="relative z-20 font-sans text-[15px] text-[#a3a3a3] hover:text-white transition-colors group-hover:underline group-hover:decoration-wavy group-hover:decoration-1 group-hover:underline-offset-[3px] group-hover:text-decoration-white [text-decoration-skip-ink:none]">
+          <span className="relative z-20 font-sans text-[15px] text-[#a3a3a3] group-hover/navlink:text-white transition-colors">
             {item.name}
           </span>
+          <div className="absolute left-4 bottom-[4px] h-[4px] w-0 group-hover/navlink:w-[calc(100%-2rem)] transition-all duration-300 ease-out pointer-events-none overflow-hidden">
+            <div className="w-[300px] h-full">
+              <svg width="100%" height="100%">
+                <defs>
+                  <pattern id={`zigzag-${idx}`} x="0" y="0" width="12" height="4" patternUnits="userSpaceOnUse">
+                    <path d="M0 2 L3 0 L9 4 L12 2" fill="none" stroke="white" strokeWidth="1.2" strokeLinejoin="round" />
+                  </pattern>
+                </defs>
+                <rect x="0" y="0" width="100%" height="100%" fill={`url(#zigzag-${idx})`} />
+              </svg>
+            </div>
+          </div>
         </a>
       ))}
     </div>
@@ -138,6 +150,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
     <motion.div
       animate={{
+        backgroundColor: visible ? "rgba(17, 16, 16, 0.7)" : "rgba(17, 16, 16, 0.5)",
         backdropFilter: visible ? "blur(10px)" : "none",
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
@@ -149,13 +162,12 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         y: visible ? 20 : 0,
       }}
       transition={{
-        type: "spring",
-        stiffness: 200,
-        damping: 50,
+        type: "tween",
+        ease: [0.16, 1, 0.3, 1],
+        duration: 0.6,
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-[#111010]/50 backdrop-blur-md px-0 py-2 lg:hidden rounded-full",
-        visible && "bg-[#111010]/70 shadow-lg",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between backdrop-blur-md px-0 py-2 lg:hidden",
         className,
       )}
     >
@@ -245,9 +257,9 @@ export const NavbarButton = ({
   className?: string;
   variant?: "primary" | "secondary" | "dark" | "gradient";
 } & (
-  | React.ComponentPropsWithoutRef<"a">
-  | React.ComponentPropsWithoutRef<"button">
-)) => {
+    | React.ComponentPropsWithoutRef<"a">
+    | React.ComponentPropsWithoutRef<"button">
+  )) => {
   const baseStyles =
     "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 

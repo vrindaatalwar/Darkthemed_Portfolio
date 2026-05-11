@@ -16,13 +16,14 @@ import {
 } from "./components/ui/resizable-navbar";
 import { AppleHelloEffectEnglish } from "./components/apple-hello-effect-english";
 import { CONFIG } from './config';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "./components/ui/card";
 
 
 
 function ScrollTracker() {
   const { scrollYProgress } = useScroll();
   const [showArrow, setShowArrow] = useState(false);
-  
+
   const scaleProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -38,7 +39,7 @@ function ScrollTracker() {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       className="fixed bottom-8 right-8 z-[100] w-12 h-12 flex items-center justify-center cursor-pointer pointer-events-auto group"
@@ -66,7 +67,7 @@ function ScrollTracker() {
           className="opacity-80 group-hover:opacity-100 transition-opacity"
         />
       </svg>
-      
+
       <AnimatePresence>
         {showArrow && (
           <motion.div
@@ -92,11 +93,13 @@ function App() {
     { name: "about", link: "#about" },
     { name: "works", link: "#experience" },
     { name: "projects", link: "#projects" },
+    { name: "components", link: "#components" },
     { name: "contact", link: "#contact" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openProjectIndex, setOpenProjectIndex] = useState<number>(-1);
+  const [openComponentIndex, setOpenComponentIndex] = useState<number>(-1);
 
 
 
@@ -214,7 +217,7 @@ function App() {
 
               {/* Dark overlay for contrast and vertical blending */}
               <div className="absolute inset-0 bg-black/30 pointer-events-none"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111010] via-transparent to-[#111010] pointer-events-none"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-[#111010] via-transparent to-[#111010] pointer-events-none"></div>
 
               {/* Animated Greeting */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-[-20px] scale-[0.6]">
@@ -228,7 +231,7 @@ function App() {
                 <img
                   src={CONFIG.profileImage}
                   alt={CONFIG.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover scale-[1.3] origin-top"
                 />
               </div>
             </div>
@@ -345,13 +348,47 @@ function App() {
 
             <div className="flex flex-col">
               {CONFIG.projects.map((project, index) => (
-                <ProjectItem 
+                <ProjectItem
                   key={project.title}
                   {...project}
                   isOpen={openProjectIndex === index}
                   onToggle={() => setOpenProjectIndex(openProjectIndex === index ? -1 : index)}
                 />
               ))}
+            </div>
+          </section>
+
+          {/* COMPONENTS */}
+          <section id="components" className="mt-8 pt-12 relative w-full">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen max-w-[749px] border-t border-dotted border-[#404040]"></div>
+            <div className="mb-6 flex justify-between items-start">
+              <div>
+                <h2 className="text-white font-serif text-[26px] mb-2">Components</h2>
+                <p className="text-[#a3a3a3] font-sans tracking-[-0.03em] text-[15px] opacity-100">UI components and interactions I've built</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+              {CONFIG.components?.map((component, index) => {
+                return (
+                  <Card key={component.title} className={`bg-[#111010] border border-[#262626] hover:border-[#404040] transition-colors group relative overflow-hidden flex flex-col justify-between ${index < 2 ? "md:col-span-5" : index === 2 ? "md:col-span-2" : "md:col-span-3"}`}>
+                    <a href={component.link} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10"></a>
+                    <CardHeader className="p-5 pb-3">
+                      <div className="flex justify-between items-center">
+                        <CardTitle className="text-white font-sans text-[15px] font-medium tracking-tight">
+                          {component.title}
+                        </CardTitle>
+                        <ExternalLink size={14} className="text-[#737373] group-hover:text-white transition-colors" />
+                      </div>
+                    </CardHeader>
+                    <CardContent className="p-5 pt-0 flex-1 flex flex-col">
+                      <div className="flex-1 w-full relative z-20 pointer-events-auto overflow-hidden">
+                        {component.demo}
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </section>
 
@@ -407,24 +444,24 @@ function App() {
   );
 }
 
-function ProjectItem({ 
-  title, 
-  description, 
-  techStack, 
-  link, 
-  isOpen, 
-  onToggle 
-}: { 
-  title: string, 
-  description: string, 
-  techStack: string[], 
-  link: string, 
-  isOpen: boolean, 
-  onToggle: () => void 
+function ProjectItem({
+  title,
+  description,
+  techStack,
+  link,
+  isOpen,
+  onToggle
+}: {
+  title: string,
+  description: string,
+  techStack: string[],
+  link: string,
+  isOpen: boolean,
+  onToggle: () => void
 }) {
   return (
     <div className="border-b border-[#262626]/50 last:border-0 transition-colors">
-      <button 
+      <button
         onClick={onToggle}
         className="w-full py-4 flex items-center justify-between group transition-colors px-2 -mx-2 rounded-lg"
       >
@@ -432,13 +469,13 @@ function ProjectItem({
           <div className="text-[#737373] transition-colors">
             {isOpen ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
           </div>
-          <h3 className="text-white font-sans font-medium text-[15px] tracking-tight transition-transform duration-150 ease-in group-hover:scale-[1.2] origin-left">
+          <h3 className="text-white font-sans font-medium text-[15px] tracking-tight">
             {title}
           </h3>
         </div>
-        <a 
-          href={link} 
-          target="_blank" 
+        <a
+          href={link}
+          target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
           className="text-[#737373] hover:text-white transition-colors"
@@ -462,8 +499,8 @@ function ProjectItem({
               </p>
               <div className="flex flex-wrap gap-x-6 gap-y-3">
                 {techStack.map((tech) => (
-                  <span 
-                    key={tech} 
+                  <span
+                    key={tech}
                     className="text-[#737373] font-sans text-[13px] hover:text-gray-100 transition-colors cursor-default"
                   >
                     {tech}
